@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Almanaque Diário · Nazaré</title>
+<title>Almanaque Diário · Nazaré · 10/03/2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -11,47 +12,53 @@
     --rust: #7a4a1a; --bg: #faf7f2; --bg-alt: #f2ede3; --text: #28200f;
     --text-mid: #5a4a30; --text-light: #8a7458; --rule: #ddd0b0;
   }
-  body { background: #e8e0d0; font-family: Georgia, serif; color: var(--text); padding: 20px; }
+  body { background: #e8e0d0; font-family: 'Source Sans 3', sans-serif; color: var(--text); padding: 24px 16px 60px; min-height: 100vh; }
   .page { max-width: 660px; margin: 0 auto; background: var(--bg); box-shadow: 0 8px 40px rgba(0,0,0,0.18); }
   .hd { background: var(--dark); padding: 36px 36px 28px; text-align: center; border-bottom: 3px solid var(--gold); }
-  .hd-eyebrow { font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-  .hd-date { font-size: 38px; font-weight: normal; color: #fff; line-height: 1; margin-bottom: 10px; }
-  .hd-sub { font-style: italic; font-size: 15px; color: var(--gold-pale); opacity: 0.75; }
+  .hd-eyebrow { font-family: 'Source Sans 3', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .hd-date { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 400; color: #fff; line-height: 1; margin-bottom: 10px; }
+  .hd-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; color: var(--gold-pale); opacity: 0.75; }
   .vitals { background: var(--dark2); display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid rgba(200,151,58,0.2); }
+  .vitals-b { border-bottom: 2px solid var(--gold); }
   .vital { padding: 14px 10px; text-align: center; border-right: 1px solid rgba(200,151,58,0.15); }
   .vital:last-child { border-right: none; }
   .vital-icon { font-size: 16px; display: block; margin-bottom: 4px; }
-  .vital-val { display: block; font-size: 13px; font-weight: 600; color: var(--gold-pale); line-height: 1.2; font-family: Helvetica, Arial, sans-serif; }
-  .vital-lbl { display: block; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); opacity: 0.6; margin-top: 3px; font-family: Helvetica, Arial, sans-serif; }
-  .vitals-b { border-bottom: 2px solid var(--gold); }
+  .vital-val { display: block; font-size: 13px; font-weight: 600; color: var(--gold-pale); line-height: 1.2; }
+  .vital-lbl { display: block; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); opacity: 0.6; margin-top: 3px; }
   .body { padding: 0 36px 36px; }
   .sec { padding-top: 28px; border-top: 1px solid var(--rule); margin-top: 28px; }
   .sec:first-child { border-top: none; margin-top: 0; padding-top: 30px; }
-  .sec-title { font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--rust); margin-bottom: 16px; }
+  .sec-title { font-family: 'Source Sans 3', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--rust); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .sec-title::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
   .cal-list { list-style: none; }
   .cal-list li { display: flex; gap: 12px; padding: 6px 0; border-bottom: 1px solid rgba(221,208,176,0.4); font-size: 14px; line-height: 1.5; }
   .cal-list li:last-child { border-bottom: none; }
-  .cal-list li strong { min-width: 150px; flex-shrink: 0; color: var(--text); }
+  .cal-list li strong { min-width: 150px; flex-shrink: 0; color: var(--text); font-weight: 600; }
   .cal-list li span { color: var(--text-mid); }
-  .al { list-style: none; padding: 0; }
-  .al li { padding: 9px 0 9px 16px; border-bottom: 1px solid rgba(221,208,176,0.35); font-size: 14.5px; line-height: 1.65; position: relative; }
-  .al li:last-child { border-bottom: none; }
-  .al li::before { content: ''; position: absolute; left: 0; top: 17px; width: 6px; height: 1px; background: var(--gold); }
-  .al li strong { color: var(--dark); font-weight: 600; }
-  p { font-size: 14.5px; line-height: 1.8; color: var(--text); margin-bottom: 12px; }
-  p:last-child { margin-bottom: 0; }
-  .thought { font-style: italic; font-size: 15px; line-height: 1.8; margin-bottom: 20px; }
+  .almanac-list { list-style: none; padding: 0; }
+  .almanac-list li { padding: 9px 0 9px 16px; border-bottom: 1px solid rgba(221,208,176,0.35); font-size: 14.5px; line-height: 1.65; color: var(--text); position: relative; }
+  .almanac-list li:last-child { border-bottom: none; }
+  .almanac-list li::before { content: ''; position: absolute; left: 0; top: 17px; width: 6px; height: 1px; background: var(--gold); }
+  .almanac-list li strong { color: var(--dark); font-weight: 600; }
+  .prose p { font-size: 14.5px; line-height: 1.8; color: var(--text); margin-bottom: 12px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .thought-body { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 20px; }
   blockquote { border-left: 2px solid var(--gold); padding: 10px 16px; font-size: 14px; line-height: 1.7; color: var(--text-mid); font-style: italic; }
-  blockquote cite { display: block; margin-top: 6px; font-size: 11px; font-style: normal; letter-spacing: 1px; color: var(--text-light); text-transform: uppercase; font-family: Helvetica, Arial, sans-serif; }
+  blockquote cite { display: block; margin-top: 6px; font-size: 11px; font-style: normal; letter-spacing: 1px; color: var(--text-light); text-transform: uppercase; }
   .word-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
-  .word-term { font-size: 24px; font-weight: 700; color: var(--dark); }
+  .word-term { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--dark); }
   .word-pron { font-size: 13px; color: var(--text-light); font-style: italic; }
   .word-row { font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 7px; padding-left: 12px; border-left: 2px solid var(--rule); }
   .word-row strong { color: var(--dark); font-weight: 600; }
-  .ft { background: var(--bg-alt); border-top: 2px solid var(--gold); padding: 16px 36px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-family: Helvetica, Arial, sans-serif; }
+  .word-row em { font-style: italic; color: var(--text-mid); }
+  .ft { background: var(--bg-alt); border-top: 2px solid var(--gold); padding: 16px 36px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-family: 'Source Sans 3', sans-serif; }
   .ft-brand { color: var(--rust); font-weight: 600; }
-  h3 { font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--rust); margin: 28px 0 16px; }
-  section:first-child h3 { margin-top: 0; }
+  @media (max-width: 520px) {
+    .hd { padding: 28px 20px 22px; } .hd-date { font-size: 30px; } .body { padding: 0 20px 28px; }
+    .vitals, .vitals-b { grid-template-columns: repeat(2, 1fr); }
+    .vital:nth-child(2), .vital:nth-child(4) { border-right: none; }
+    .ft { flex-direction: column; gap: 4px; text-align: center; }
+  }
 </style>
 </head>
 <body>
@@ -68,7 +75,7 @@
     <div class="vital"><span class="vital-icon">🔢</span><span class="vital-val">JD 2461109</span><span class="vital-lbl">Dia Juliano</span></div>
   </div>
   <div class="vitals vitals-b">
-    <div class="vital"><span class="vital-icon">🌖</span><span class="vital-val">Minguante Gibosa 54%</span><span class="vital-lbl">Lua</span></div>
+    <div class="vital"><span class="vital-icon">🌖</span><span class="vital-val">Minguante Gibosa 53%</span><span class="vital-lbl">Lua</span></div>
     <div class="vital"><span class="vital-icon">🌅</span><span class="vital-val">07:03 UTC</span><span class="vital-lbl">Nascer do sol</span></div>
     <div class="vital"><span class="vital-icon">🌇</span><span class="vital-val">18:31 UTC</span><span class="vital-lbl">Pôr do sol</span></div>
     <div class="vital"><span class="vital-icon">⏳</span><span class="vital-val">11h 28m</span><span class="vital-lbl">Duração do dia</span></div>
@@ -82,8 +89,8 @@
 <li><strong>Gregoriano:</strong> Terça-feira, 10 de março de 2026</li>
 <li><strong>Islâmico/Hijri:</strong> 11 de Ramadão de 1447 AH</li>
 <li><strong>Hebraico:</strong> 10 de Adar II de 5786 (ano embolísmico)</li>
-<li><strong>Chinês Lunissolar:</strong> 22.º dia do 2.º mês, Ano do Cavalo de Madeira (乙巳 — Serpente de Madeira, ciclo até fevereiro de 2026; ajuste: Ano Bǐng Wǔ, Cavalo de Fogo)</li>
-<li><strong>Persa/Hijri Solar:</strong> 19 de Esfand de 1404</li>
+<li><strong>Chinês Lunissolar:</strong> 22.º dia do 2.º mês, Ano do Cavalo de Madeira (乙巳 — Serpente de Madeira, ciclo de 4723)</li>
+<li><strong>Persa/Solar Hijri:</strong> 19 de Esfand de 1404</li>
 <li><strong>Etíope:</strong> 1 de Megabit de 2018</li>
 <li><strong>Juliano:</strong> 25 de fevereiro de 2026</li>
 </ul>
@@ -92,54 +99,60 @@
 <section id="history">
 <h3>📜 Este Dia na História</h3>
 <ul>
-<li><strong>241 a.C.</strong> — Batalha das Ilhas Egates: Roma derrota Cartago na batalha naval decisiva que põe fim à Primeira Guerra Púnica, assegurando o domínio romano sobre o Mediterrâneo ocidental.</li>
-<li><strong>1629</strong> — O rei Carlos I de Inglaterra dissolve o Parlamento, iniciando onze anos de governo pessoal sem convocação parlamentar — período que ficará conhecido como a «Tirania dos Onze Anos».</li>
-<li><strong>1762</strong> — Jean Calas, comerciante protestante de Toulouse, é executado por roda, vítima de intolerância religiosa. O caso mobilizará Voltaire para uma das mais célebres campanhas pela justiça e tolerância do Iluminismo.</li>
-<li><strong>1876</strong> — Alexander Graham Bell realiza a primeira transmissão bem-sucedida de voz por telefone, pronunciando as palavras «Mr. Watson, come here — I want to see you» ao seu assistente, em Boston.</li>
-<li><strong>1906</strong> — A catástrofe mineira de Courrières, no Pas-de-Calais, França, mata 1.099 mineiros numa explosão de grisú — o pior desastre mineiro da história europeia.</li>
-<li><strong>1952</strong> — Fulgencio Batista derruba o presidente Carlos Prío Socarrás num golpe de Estado em Cuba, instaurando a ditadura que será derrubada pela Revolução de 1959.</li>
-<li><strong>2006</strong> — A sonda Mars Reconnaissance Orbiter da NASA entra com sucesso na órbita de Marte, iniciando uma missão de observação que continua ativa duas décadas depois.</li>
+<li><strong>241 a.C.</strong> — Batalha das Ilhas Égates: a frota romana derrota Cartago, pondo fim à Primeira Guerra Púnica e inaugurando a supremacia naval de Roma no Mediterrâneo ocidental.</li>
+<li><strong>1629</strong> — Carlos I de Inglaterra dissolve o Parlamento, dando início a onze anos de governo pessoal — o chamado período da «tirania pessoal» —, prelúdio da Guerra Civil Inglesa.</li>
+<li><strong>1762</strong> — Em Toulouse, o comerciante huguenote Jean Calas é executado na roda por um crime que não cometeu. O caso viria a tornar-se causa célebre de Voltaire na luta pela tolerância religiosa.</li>
+<li><strong>1876</strong> — Alexander Graham Bell realiza a primeira transmissão telefónica bem-sucedida, pronunciando a célebre frase «Mr. Watson, come here — I want to see you» desde o seu laboratório em Boston.</li>
+<li><strong>1906</strong> — A catástrofe mineira de Courrières, no Pas-de-Calais (França), mata 1099 mineiros — a mais mortífera catástrofe mineira da Europa — e desencadeia profundas reformas na segurança laboral.</li>
+<li><strong>1952</strong> — Fulgencio Batista executa um golpe de Estado em Cuba, depondo o presidente Carlos Prío Socarrás e instalando o regime que a Revolução de 1959 viria a derrubar.</li>
+<li><strong>2006</strong> — A sonda Mars Reconnaissance Orbiter da NASA entra com sucesso em órbita de Marte, iniciando uma missão de cartografia e análise atmosférica que continua ativa duas décadas depois.</li>
 </ul>
 </section>
 
 <section id="born">
 <h3>👤 Nascidos Neste Dia</h3>
 <ul>
-<li><strong>1452</strong> — <em>Fernando II de Aragão</em>, o Rei Católico, arquitecto da unificação espanhola e patrono da viagem de Colombo ao Novo Mundo.</li>
-<li><strong>1772</strong> — <em>Friedrich Schlegel</em>, filósofo, crítico literário e poeta alemão, figura central do Romantismo de Jena e teorizador da ironia romântica.</li>
-<li><strong>1903</strong> — <em>Bix Beiderbecke</em>, cornetista e compositor norte-americano, génio precoce do jazz cuja sonoridade lírica e cristalina influenciou gerações.</li>
-<li><strong>1940</strong> — <em>Chuck Norris</em>, artista marcial e actor norte-americano, ícone da cultura popular e do cinema de acção das décadas de 1980 e 1990.</li>
-<li><strong>1957</strong> — <em>Osama bin Laden</em>, figura histórica controversa, fundador da Al-Qaeda, cuja acção reconfigurou a geopolítica global no início do século XXI.</li>
+<li><strong>1452</strong> — <em>Fernando II de Aragão</em>, o Rei Católico, unificador da coroa espanhola com Isabel I de Castela, artífice da Reconquista final e patrocinador da viagem de Colombo.</li>
+<li><strong>1772</strong> — <em>Friedrich Schlegel</em>, filósofo e crítico literário alemão, figura central do primeiro Romantismo e inventor do conceito moderno de ironia literária.</li>
+<li><strong>1867</strong> — <em>Lillian Wald</em>, enfermeira e reformadora social norte-americana, fundadora do Henry Street Settlement em Nova Iorque, pioneira na saúde pública comunitária.</li>
+<li><strong>1940</strong> — <em>Chuck Norris</em>, artista marcial e ator norte-americano, cuja carreira no cinema de ação se converteu em fenómeno cultural.</li>
+<li><strong>1957</strong> — <em>Osama bin Laden</em>, figura tristemente notória da história contemporânea, fundador da al-Qaeda e mentor dos atentados de 11 de setembro de 2001.</li>
 </ul>
 </section>
 
 <section id="died">
-<h3>✝️ Falecidos Neste Dia</h3>
+<h3>✝️ Mortes Neste Dia</h3>
 <ul>
-<li><strong>1872</strong> — <em>Giuseppe Mazzini</em>, patriota, filósofo e revolucionário italiano, um dos pais da unificação de Itália, falecido em Pisa sob nome falso, ainda perseguido.</li>
-<li><strong>1913</strong> — <em>Harriet Tubman</em>, abolicionista afro-americana, condutora da Underground Railroad, que guiou dezenas de escravizados para a liberdade antes da Guerra Civil.</li>
-<li><strong>1985</strong> — <em>Konstantin Chernenko</em>, secretário-geral do Partido Comunista da União Soviética, cuja morte abriu caminho à ascensão de Mikhail Gorbachev e à perestroika.</li>
-<li><strong>2004</strong> — <em>José Cardoso Pires</em> (falecido a 26 de outubro de 1998 — nota: para rigor, substituímos): <em>Eva Herzigová</em> — Correndo risco de imprecisão, registemos: <strong>Ângelo de Sousa</strong>, notável pintor e escultor português da segunda metade do século XX, faleceu a 7 de março — aproximação.</li>
+<li><strong>1513</strong> — <em>John de Vere, 13.º Conde de Oxford</em>, general lancasteriano nas Guerras das Rosas e principal comandante militar de Henrique VII na batalha de Bosworth.</li>
+<li><strong>1872</strong> — <em>Giuseppe Mazzini</em>, patriota, filósofo e revolucionário italiano, alma intelectual do Risorgimento e da unificação de Itália, falecido em Pisa sob nome falso, ainda exilado na sua própria pátria.</li>
+<li><strong>1985</strong> — <em>Konstantin Chernenko</em>, Secretário-Geral do Partido Comunista da União Soviética, cuja morte após apenas treze meses no poder abriu caminho à ascensão de Mikhail Gorbatchov e à era da Perestroika.</li>
+<li><strong>2017</strong> — <em>John Surtees</em>, o único homem a conquistar campeonatos mundiais tanto em motociclismo como em Fórmula 1, lenda irrepetível do desporto motorizado.</li>
 </ul>
-<p><em>Nota de rigor:</em> Entre os falecimentos mais significativos a 10 de março contam-se igualmente o compositor francês <strong>Arthur Honegger</strong> (†1955, embora a data mais aceite seja 27 de novembro) e a filósofa <strong>Harriet Tubman</strong>, cuja data permanece a mais emblemática deste dia.</p>
 </section>
 
 <section id="saints">
-<h3>⛪ Dias de Festa & Santos</h3>
+<h3>⛪ Dias de Festa e Santos</h3>
 <ul>
-<li><strong>Santos Quarenta Mártires de Sebaste</strong> (c. 320) — Soldados romanos da Legio XII Fulminata que, recusando abjurar a fé cristã, foram deixados a morrer de frio num lago gelado na Arménia. Festa de enorme importância nas Igrejas Orientais e celebrada também no calendário católico romano.</li>
-<li><strong>São Macário de Jerusalém</strong> — Bispo de Jerusalém no século IV, presente no Concílio de Niceia (325), associado à descoberta da Vera Cruz.</li>
-<li><strong>São Simplício</strong> — Papa de 468 a 483, que governou a Igreja durante a queda do Império Romano do Ocidente.</li>
-<li><strong>São Droctoveu (Drotté)</strong> — Primeiro abade da Abadia de Saint-Germain-des-Prés, Paris (século VI).</li>
+<li><strong>Calendário Romano Católico:</strong> Santos Quarenta Mártires de Sebaste — soldados cristãos da XII Legião Fulminata, condenados a morrer de frio num lago gelado na Arménia romana (c. 320). Festa de grande tradição no Oriente cristão.</li>
+<li><strong>Calendário Ortodoxo:</strong> Os mesmos Quarenta Mártires de Sebaste, uma das festas mais celebradas da Quaresma oriental, frequentemente associada ao início da primavera nos Balcãs.</li>
+<li><strong>Santos do dia:</strong> São Macário de Jerusalém, bispo (séc. IV); São Simplício, papa (†483); Beato João Ogilvie, mártir jesuíta escocês (†1615).</li>
+<li><strong>Onomásticos (Portugal):</strong> Vítor, Macário, Simplício.</li>
+<li><strong>Onomásticos (Espanha):</strong> Víctor, Macario.</li>
+<li><strong>Namenstag (Alemanha):</strong> Gustav, Emil, Alexander.</li>
+<li><strong>Fête (França):</strong> Vivien.</li>
 </ul>
-<p><strong>Dias de nome:</strong> Em Portugal, celebram-se os nomes <em>Macário</em> e <em>Simplício</em>. Em Espanha: <em>Víctor</em>. Na Alemanha: <em>Gustav</em>, <em>Emil</em>, <em>40 Märtyrer</em>. Em França: <em>Vivien</em>.</p>
 </section>
 
 <section id="nature">
-<h3>🌿 Natureza & Efemérides</h3>
-<p>Na Península Ibérica, a segunda semana de março marca uma transição palpável. O dia já ultrapassou as onze horas e meia de luz solar, e a temperatura média diurna no estuário do Tejo ronda os 16–18 °C. Nos campos do Ribatejo e do Alentejo, os sobreiros começam a abrir os primeiros rebentos, enquanto as amendoeiras, que em fevereiro pintaram o Algarve de branco e rosa, cedem agora o protagonismo às laranjeiras em flor, cujo perfume domina os pomares algarvios. Os rosmaninhos (<em>Lavandula stoechas</em>) explodem em manchas violeta nas encostas calcárias da Arrábida e da Serra de Sintra.</p>
-<p>Os andorinhões-pálidos (<em>Apus pallidus</em>) já regressaram aos beirais das cidades costeiras, e nas zonas húmidas do Sado e do Tejo intensifica-se a passagem migratória de limícolas em rota para o Norte da Europa. Nas águas da costa vicentina, os golfinhos-comuns acompanham os cardumes de sardinha que se aproximam do litoral com o aumento gradual da temperatura da água. É tempo de preparar as hortas: semeiam-se favas, ervilhas e batatas, conforme manda o adágio — «Em março, mete a mão no saco.»</p>
-<p>No mar, os pescadores artesanais da Ericeira e de Peniche dedicam-se à captura do polvo e do congro, enquanto a safra do percebe atinge um dos seus picos, antes que as marés vivas da Páscoa dificultem o acesso às rochas
+<h3>🌿 Natureza e Efemérides</h3>
+<p>Na Península Ibérica, a segunda semana de março é um limiar: o inverno ainda não abandonou as terras altas, mas o sol, com já quase onze horas e meia de presença, aquece com determinação os solos aluviais do Tejo e do Sado. Nos campos do Ribatejo e do Alentejo litoral, as amendoeiras já terminaram a sua floração — entregaram o testemunho às laranjeiras em flor e aos pessegueiros, cujo rosa delicado marca as hortas e quintais. As estradas rurais marginam-se de amarelo: tojo (<em>Ulex europaeus</em>), giesta e erva-de-são-roberto pintam o mato baixo com cores de sol antes do tempo.</p>
+<p>É época de grande atividade migratória. As andorinhas-das-chaminés (<em>Hirundo rustica</em>) começam a regressar ao sul de Portugal — os primeiros indivíduos avistam-se já no Algarve e no estuário do Sado. No litoral, os bandos de pilritos e tarambolas preparam-se para a viagem rumo ao norte da Europa. Nas serras interiores, o veado já perdeu as hastes e o javali começa a deslocar-se com as crias nascidas no final do inverno.</p>
+<p>Nos campos, é tempo tradicional de lavrar e preparar os canteiros para as culturas de primavera — batata, feijão, ervilha. As vinhas são podadas tardiamente nas regiões mais frias do Douro e do Dão. No mar, a frota costeira de Peniche e Sesimbra recolhe boas capturas de sardinha antes da grande corrida primaveril, e os mariscadores do Algarve trabalham as últimas semanas de apanha da amêijoa antes da pausa biológica. O calendário popular diz: «Março marçagão, manhã de inverno, tarde de verão» — e é exatamente isso que se vive.</p>
+</section>
+
+<section id="thought">
+<h3>💭 Pensamento do Dia</h3>
+<p>Há uma espécie de coragem que só o fim do inverno ensina: a de confiar sem provas. As árvores rebentam antes de saberem se a geada voltará; os pássaros partem antes de terem a certeza do vento. Nós, que exigimos garantias para tudo —
   </div>
   <div class="ft">
     <span>Almanaque · Nazaré, Portugal · 2026-03-10</span>
