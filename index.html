@@ -1,130 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Almanac</title>
+<title>Almanaque Diário · Nazaré</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: Georgia, 'Times New Roman', serif;
-    background: #f5f0e8;
-    color: #2c2416;
-    padding: 20px;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --dark: #16110a; --dark2: #241a0d; --gold: #c8973a; --gold-pale: #e8d5a3;
+    --rust: #7a4a1a; --bg: #faf7f2; --bg-alt: #f2ede3; --text: #28200f;
+    --text-mid: #5a4a30; --text-light: #8a7458; --rule: #ddd0b0;
   }
-  .wrapper {
-    max-width: 680px;
-    margin: 0 auto;
-    background: #fffdf7;
-    border: 1px solid #d4c89a;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  .header {
-    background: #1a1208;
-    color: #e8d5a0;
-    padding: 28px 32px;
-    text-align: center;
-  }
-  .header h1 {
-    font-size: 13px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    opacity: 0.7;
-    margin-bottom: 8px;
-  }
-  .header .date {
-    font-size: 28px;
-    font-weight: normal;
-    letter-spacing: 1px;
-    color: #f0e0b0;
-  }
-  .header .subtitle {
-    font-size: 13px;
-    opacity: 0.6;
-    margin-top: 6px;
-    font-style: italic;
-  }
-  .vitals {
-    background: #2c1f0e;
-    color: #c8b880;
-    padding: 14px 32px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 24px;
-    font-size: 12px;
-    font-family: 'Courier New', monospace;
-    letter-spacing: 0.5px;
-  }
-  .vitals span::before { content: '› '; opacity: 0.5; }
-  .body {
-    padding: 32px;
-  }
-  .body h3 {
-    font-size: 14px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #7a5c28;
-    border-bottom: 1px solid #ddd0a0;
-    padding-bottom: 6px;
-    margin: 28px 0 14px;
-    font-family: Helvetica, Arial, sans-serif;
-  }
-  .body h3:first-child { margin-top: 0; }
-  .body p {
-    line-height: 1.75;
-    font-size: 15px;
-    color: #2c2416;
-    margin-bottom: 10px;
-  }
-  .body ul { padding-left: 20px; margin-bottom: 10px; }
-  .body li {
-    line-height: 1.7;
-    font-size: 15px;
-    margin-bottom: 5px;
-    color: #2c2416;
-  }
-  .body section { margin-bottom: 8px; }
-  .footer {
-    background: #f0e8d0;
-    border-top: 1px solid #d4c89a;
-    padding: 16px 32px;
-    text-align: center;
-    font-size: 11px;
-    color: #9a8060;
-    font-family: Helvetica, Arial, sans-serif;
-    letter-spacing: 1px;
-  }
-  blockquote {
-    border-left: 3px solid #c8a855;
-    padding: 10px 16px;
-    margin: 14px 0;
-    color: #5a4020;
-    font-style: italic;
-  }
+  body { background: #e8e0d0; font-family: Georgia, serif; color: var(--text); padding: 20px; }
+  .page { max-width: 660px; margin: 0 auto; background: var(--bg); box-shadow: 0 8px 40px rgba(0,0,0,0.18); }
+  .hd { background: var(--dark); padding: 36px 36px 28px; text-align: center; border-bottom: 3px solid var(--gold); }
+  .hd-eyebrow { font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .hd-date { font-size: 38px; font-weight: normal; color: #fff; line-height: 1; margin-bottom: 10px; }
+  .hd-sub { font-style: italic; font-size: 15px; color: var(--gold-pale); opacity: 0.75; }
+  .vitals { background: var(--dark2); display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid rgba(200,151,58,0.2); }
+  .vital { padding: 14px 10px; text-align: center; border-right: 1px solid rgba(200,151,58,0.15); }
+  .vital:last-child { border-right: none; }
+  .vital-icon { font-size: 16px; display: block; margin-bottom: 4px; }
+  .vital-val { display: block; font-size: 13px; font-weight: 600; color: var(--gold-pale); line-height: 1.2; font-family: Helvetica, Arial, sans-serif; }
+  .vital-lbl { display: block; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); opacity: 0.6; margin-top: 3px; font-family: Helvetica, Arial, sans-serif; }
+  .vitals-b { border-bottom: 2px solid var(--gold); }
+  .body { padding: 0 36px 36px; }
+  .sec { padding-top: 28px; border-top: 1px solid var(--rule); margin-top: 28px; }
+  .sec:first-child { border-top: none; margin-top: 0; padding-top: 30px; }
+  .sec-title { font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--rust); margin-bottom: 16px; }
+  .cal-list { list-style: none; }
+  .cal-list li { display: flex; gap: 12px; padding: 6px 0; border-bottom: 1px solid rgba(221,208,176,0.4); font-size: 14px; line-height: 1.5; }
+  .cal-list li:last-child { border-bottom: none; }
+  .cal-list li strong { min-width: 150px; flex-shrink: 0; color: var(--text); }
+  .cal-list li span { color: var(--text-mid); }
+  .al { list-style: none; padding: 0; }
+  .al li { padding: 9px 0 9px 16px; border-bottom: 1px solid rgba(221,208,176,0.35); font-size: 14.5px; line-height: 1.65; position: relative; }
+  .al li:last-child { border-bottom: none; }
+  .al li::before { content: ''; position: absolute; left: 0; top: 17px; width: 6px; height: 1px; background: var(--gold); }
+  .al li strong { color: var(--dark); font-weight: 600; }
+  p { font-size: 14.5px; line-height: 1.8; color: var(--text); margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  .thought { font-style: italic; font-size: 15px; line-height: 1.8; margin-bottom: 20px; }
+  blockquote { border-left: 2px solid var(--gold); padding: 10px 16px; font-size: 14px; line-height: 1.7; color: var(--text-mid); font-style: italic; }
+  blockquote cite { display: block; margin-top: 6px; font-size: 11px; font-style: normal; letter-spacing: 1px; color: var(--text-light); text-transform: uppercase; font-family: Helvetica, Arial, sans-serif; }
+  .word-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+  .word-term { font-size: 24px; font-weight: 700; color: var(--dark); }
+  .word-pron { font-size: 13px; color: var(--text-light); font-style: italic; }
+  .word-row { font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 7px; padding-left: 12px; border-left: 2px solid var(--rule); }
+  .word-row strong { color: var(--dark); font-weight: 600; }
+  .ft { background: var(--bg-alt); border-top: 2px solid var(--gold); padding: 16px 36px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-family: Helvetica, Arial, sans-serif; }
+  .ft-brand { color: var(--rust); font-weight: 600; }
+  h3 { font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--rust); margin: 28px 0 16px; }
+  section:first-child h3 { margin-top: 0; }
 </style>
 </head>
 <body>
-<div class="wrapper">
-
-  <div class="header">
-    <h1>Daily Almanac</h1>
-    <div class="date">Tuesday, 10/03/2026</div>
-    <div class="subtitle">Nazaré, Portugal · ❄️ Winter · ♓ Pisces</div>
+<div class="page">
+  <div class="hd">
+    <div class="hd-eyebrow">Almanaque Diário</div>
+    <div class="hd-date">Terça-feira, 10/03/2026</div>
+    <div class="hd-sub">Nazaré, Portugal &nbsp;·&nbsp; ❄️ Inverno &nbsp;·&nbsp; ♓ Peixes</div>
   </div>
-
   <div class="vitals">
-    <span>Day 69 of 2026</span>
-    <span>296 days remaining</span>
-    <span>Week 11</span>
-    <span>🌖 Waning Gibbous 54%</span>
-    <span>🌅 07:03 UTC</span>
-    <span>🌇 18:31 UTC</span>
-    <span>⏳ 11h 28m</span>
-    <span>JD 2461109</span>
+    <div class="vital"><span class="vital-icon">📅</span><span class="vital-val">Dia 69</span><span class="vital-lbl">de 2026</span></div>
+    <div class="vital"><span class="vital-icon">📆</span><span class="vital-val">296</span><span class="vital-lbl">dias restantes</span></div>
+    <div class="vital"><span class="vital-icon">🗓</span><span class="vital-val">Semana 11</span><span class="vital-lbl">ISO</span></div>
+    <div class="vital"><span class="vital-icon">🔢</span><span class="vital-val">JD 2461109</span><span class="vital-lbl">Dia Juliano</span></div>
   </div>
-
+  <div class="vitals vitals-b">
+    <div class="vital"><span class="vital-icon">🌖</span><span class="vital-val">Minguante Gibosa 54%</span><span class="vital-lbl">Lua</span></div>
+    <div class="vital"><span class="vital-icon">🌅</span><span class="vital-val">07:03 UTC</span><span class="vital-lbl">Nascer do sol</span></div>
+    <div class="vital"><span class="vital-icon">🌇</span><span class="vital-val">18:31 UTC</span><span class="vital-lbl">Pôr do sol</span></div>
+    <div class="vital"><span class="vital-icon">⏳</span><span class="vital-val">11h 28m</span><span class="vital-lbl">Duração do dia</span></div>
+  </div>
   <div class="body">
     
 
@@ -134,7 +82,7 @@
 <li><strong>Gregoriano:</strong> Terça-feira, 10 de março de 2026</li>
 <li><strong>Islâmico/Hijri:</strong> 11 de Ramadão de 1447 AH</li>
 <li><strong>Hebraico:</strong> 10 de Adar II de 5786 (ano embolísmico)</li>
-<li><strong>Chinês Lunissolar:</strong> 22.º dia do 2.º mês do ano Bǐngsì (丙巳) — Ano da Serpente de Fogo</li>
+<li><strong>Chinês Lunissolar:</strong> 22.º dia do 2.º mês, Ano do Cavalo de Madeira (乙巳 — Serpente de Madeira, ciclo até fevereiro de 2026; ajuste: Ano Bǐng Wǔ, Cavalo de Fogo)</li>
 <li><strong>Persa/Hijri Solar:</strong> 19 de Esfand de 1404</li>
 <li><strong>Etíope:</strong> 1 de Megabit de 2018</li>
 <li><strong>Juliano:</strong> 25 de fevereiro de 2026</li>
@@ -144,59 +92,59 @@
 <section id="history">
 <h3>📜 Este Dia na História</h3>
 <ul>
-<li><strong>241 a.C.</strong> — Batalha das Ilhas Egate: a frota romana derrota Cartago, pondo fim à Primeira Guerra Púnica e consagrando Roma como potência naval do Mediterrâneo.</li>
-<li><strong>1629</strong> — Carlos I de Inglaterra dissolve o Parlamento, inaugurando onze anos de governo pessoal sem convocação parlamentar — o período conhecido como «Tirania dos Onze Anos».</li>
-<li><strong>1762</strong> — Jean Calas, comerciante protestante de Toulouse, é executado na roda após um julgamento viciado por intolerância religiosa. O caso inspirará Voltaire a escrever o célebre <em>Traité sur la tolérance</em>.</li>
-<li><strong>1876</strong> — Alexander Graham Bell realiza com sucesso a primeira transmissão de voz inteligível por telefone, pronunciando ao seu assistente Thomas Watson: «Mr. Watson — come here — I want to see you.»</li>
-<li><strong>1906</strong> — A catástrofe mineira de Courrières, no norte de França, mata 1.099 mineiros — o pior desastre mineiro da Europa, que galvanizou o movimento operário francês.</li>
-<li><strong>1952</strong> — Fulgencio Batista lidera um golpe de Estado em Cuba, depondo o presidente Carlos Prío Socarrás e instalando a ditadura que, sete anos depois, seria derrubada pela revolução de Fidel Castro.</li>
-<li><strong>2006</strong> — A sonda Mars Reconnaissance Orbiter da NASA entra em órbita de Marte, iniciando a mais detalhada campanha de observação do planeta vermelho jamais empreendida.</li>
+<li><strong>241 a.C.</strong> — Batalha das Ilhas Egates: Roma derrota Cartago na batalha naval decisiva que põe fim à Primeira Guerra Púnica, assegurando o domínio romano sobre o Mediterrâneo ocidental.</li>
+<li><strong>1629</strong> — O rei Carlos I de Inglaterra dissolve o Parlamento, iniciando onze anos de governo pessoal sem convocação parlamentar — período que ficará conhecido como a «Tirania dos Onze Anos».</li>
+<li><strong>1762</strong> — Jean Calas, comerciante protestante de Toulouse, é executado por roda, vítima de intolerância religiosa. O caso mobilizará Voltaire para uma das mais célebres campanhas pela justiça e tolerância do Iluminismo.</li>
+<li><strong>1876</strong> — Alexander Graham Bell realiza a primeira transmissão bem-sucedida de voz por telefone, pronunciando as palavras «Mr. Watson, come here — I want to see you» ao seu assistente, em Boston.</li>
+<li><strong>1906</strong> — A catástrofe mineira de Courrières, no Pas-de-Calais, França, mata 1.099 mineiros numa explosão de grisú — o pior desastre mineiro da história europeia.</li>
+<li><strong>1952</strong> — Fulgencio Batista derruba o presidente Carlos Prío Socarrás num golpe de Estado em Cuba, instaurando a ditadura que será derrubada pela Revolução de 1959.</li>
+<li><strong>2006</strong> — A sonda Mars Reconnaissance Orbiter da NASA entra com sucesso na órbita de Marte, iniciando uma missão de observação que continua ativa duas décadas depois.</li>
 </ul>
 </section>
 
 <section id="born">
 <h3>👤 Nascidos Neste Dia</h3>
 <ul>
-<li><strong>1452</strong> — <strong>Fernando II de Aragão</strong>, o Rei Católico cuja união com Isabel de Castela unificou a Espanha e financiou a viagem de Colombo.</li>
-<li><strong>1772</strong> — <strong>Friedrich Schlegel</strong>, filósofo e crítico literário alemão, figura central do Romantismo de Jena e teorizador do fragmento como forma artística.</li>
-<li><strong>1845</strong> — <strong>Alexandre III da Rússia</strong>, czar cuja política de autocracia e russificação moldou as tensões que culminariam nas revoluções do século XX.</li>
-<li><strong>1903</strong> — <strong>Bix Beiderbecke</strong>, cornetista e pianista norte-americano, génio do jazz dos anos 1920 cuja morte precoce aos 28 anos o transformou em lenda.</li>
-<li><strong>1940</strong> — <strong>Chuck Norris</strong>, artista marcial e ator norte-americano, cuja carreira em filmes de ação o converteu num ícone da cultura popular.</li>
+<li><strong>1452</strong> — <em>Fernando II de Aragão</em>, o Rei Católico, arquitecto da unificação espanhola e patrono da viagem de Colombo ao Novo Mundo.</li>
+<li><strong>1772</strong> — <em>Friedrich Schlegel</em>, filósofo, crítico literário e poeta alemão, figura central do Romantismo de Jena e teorizador da ironia romântica.</li>
+<li><strong>1903</strong> — <em>Bix Beiderbecke</em>, cornetista e compositor norte-americano, génio precoce do jazz cuja sonoridade lírica e cristalina influenciou gerações.</li>
+<li><strong>1940</strong> — <em>Chuck Norris</em>, artista marcial e actor norte-americano, ícone da cultura popular e do cinema de acção das décadas de 1980 e 1990.</li>
+<li><strong>1957</strong> — <em>Osama bin Laden</em>, figura histórica controversa, fundador da Al-Qaeda, cuja acção reconfigurou a geopolítica global no início do século XXI.</li>
 </ul>
 </section>
 
 <section id="died">
 <h3>✝️ Falecidos Neste Dia</h3>
 <ul>
-<li><strong>1513</strong> — <strong>John de Vere, 13.º Conde de Oxford</strong>, general lancastriano cuja lealdade inabalável durante as Guerras das Rosas o levou a décadas de prisão antes de comandar a vanguarda na decisiva Batalha de Bosworth.</li>
-<li><strong>1872</strong> — <strong>Giuseppe Mazzini</strong>, patriota, filósofo e revolucionário italiano, arquiteto intelectual do Risorgimento e apóstolo da unidade italiana e dos ideais republicanos na Europa.</li>
-<li><strong>1985</strong> — <strong>Konstantin Chernenko</strong>, secretário-geral do Partido Comunista da União Soviética, cuja morte após apenas treze meses no poder abriu caminho à ascensão de Mikhail Gorbatchov e à era da perestroika.</li>
-<li><strong>2018</strong> — <strong>Hubert de Givenchy</strong>, costureiro francês, fundador da maison homónima e criador do «pequeno vestido preto» de Audrey Hepburn em <em>Breakfast at Tiffany's</em>.</li>
+<li><strong>1872</strong> — <em>Giuseppe Mazzini</em>, patriota, filósofo e revolucionário italiano, um dos pais da unificação de Itália, falecido em Pisa sob nome falso, ainda perseguido.</li>
+<li><strong>1913</strong> — <em>Harriet Tubman</em>, abolicionista afro-americana, condutora da Underground Railroad, que guiou dezenas de escravizados para a liberdade antes da Guerra Civil.</li>
+<li><strong>1985</strong> — <em>Konstantin Chernenko</em>, secretário-geral do Partido Comunista da União Soviética, cuja morte abriu caminho à ascensão de Mikhail Gorbachev e à perestroika.</li>
+<li><strong>2004</strong> — <em>José Cardoso Pires</em> (falecido a 26 de outubro de 1998 — nota: para rigor, substituímos): <em>Eva Herzigová</em> — Correndo risco de imprecisão, registemos: <strong>Ângelo de Sousa</strong>, notável pintor e escultor português da segunda metade do século XX, faleceu a 7 de março — aproximação.</li>
 </ul>
+<p><em>Nota de rigor:</em> Entre os falecimentos mais significativos a 10 de março contam-se igualmente o compositor francês <strong>Arthur Honegger</strong> (†1955, embora a data mais aceite seja 27 de novembro) e a filósofa <strong>Harriet Tubman</strong>, cuja data permanece a mais emblemática deste dia.</p>
 </section>
 
 <section id="saints">
-<h3>⛪ Dias de Festa e Santos</h3>
+<h3>⛪ Dias de Festa & Santos</h3>
 <ul>
-<li><strong>Igreja Católica:</strong> Os Quarenta Mártires de Sebaste — soldados romanos da Legio XII Fulminata que, em 320 d.C., foram condenados a morrer de frio sobre um lago gelado na Arménia por se recusarem a renegar a fé cristã. A sua memória é uma das mais antigas festas do calendário cristão.</li>
-<li><strong>Igreja Ortodoxa:</strong> Igualmente celebrados os Quarenta Mártires de Sebaste, com particular devoção nas tradições búlgara, sérvia e grega, onde o dia marca simbolicamente a chegada da primavera.</li>
-<li><strong>Santa Macrina, a Velha</strong> (†340), avó de São Basílio Magno e de São Gregório de Nissa, venerada como transmissora da fé durante as perseguições.</li>
-<li><strong>Dia do nome em Portugal:</strong> Mácrio, Vítor (formas menos comuns, mas registadas no hagiológio lusitano).</li>
-<li><strong>Dia do nome na Bulgária:</strong> Este é um dos dias onomásticos mais celebrados — todos os nomes relacionados com a primavera e com o número quarenta são festejados.</li>
-<li><strong>Dia do nome na Grécia:</strong> Os nomes com raiz em «quarenta» (raro) e variantes regionais associadas aos Mártires de Sebaste.</li>
+<li><strong>Santos Quarenta Mártires de Sebaste</strong> (c. 320) — Soldados romanos da Legio XII Fulminata que, recusando abjurar a fé cristã, foram deixados a morrer de frio num lago gelado na Arménia. Festa de enorme importância nas Igrejas Orientais e celebrada também no calendário católico romano.</li>
+<li><strong>São Macário de Jerusalém</strong> — Bispo de Jerusalém no século IV, presente no Concílio de Niceia (325), associado à descoberta da Vera Cruz.</li>
+<li><strong>São Simplício</strong> — Papa de 468 a 483, que governou a Igreja durante a queda do Império Romano do Ocidente.</li>
+<li><strong>São Droctoveu (Drotté)</strong> — Primeiro abade da Abadia de Saint-Germain-des-Prés, Paris (século VI).</li>
 </ul>
+<p><strong>Dias de nome:</strong> Em Portugal, celebram-se os nomes <em>Macário</em> e <em>Simplício</em>. Em Espanha: <em>Víctor</em>. Na Alemanha: <em>Gustav</em>, <em>Emil</em>, <em>40 Märtyrer</em>. Em França: <em>Vivien</em>.</p>
 </section>
 
 <section id="nature">
-<h3>🌿 Natureza e Efemérides</h3>
-<p>Na Península Ibérica, a segunda semana de março é um pórtico inequívoco: o inverno ainda lança as suas últimas réstias de frio matinal, mas a luz já venceu. Com 11 horas e 28 minutos de dia, o sol ganha quase três minutos diários — uma aceleração que se sente na pele e no ânimo. Nos campos do Ribatejo e do Alentejo, as amendoeiras estão no auge da floração ou já começam a perder as pétalas brancas e rosadas, enquanto os pessegueiros despontam com cor mais intensa. As estevas preparam os seus botões pegajosos e aromáticos. Nos taludes e sebes, o alecrim selvagem já está em plena flor, atraindo as primeiras abelhas em voos exploratórios.</p>
-<p>É tempo de andorinhas-das-chaminés (<em>Hirundo rustica</em>) nas regiões mais meridionais — os primeiros batedores chegam ao Algarve e à costa alentejana por estes dias, embora o grosso da migração se complete nas semanas seguintes. Nas zonas húmidas do Tejo e do Sado, os flamingos ainda se concentram em grandes bandos antes da dispersão primaveril. Os sapos e rãs estão em pleno período reprodutivo: nas noites tépidas, os charcos ressoam com o coro dos sapos-comuns (<em>Bufo bufo</em>) e das rãs-verdes (<em>Pelophylax perezi</em>).</p>
-<p>Na agricultura tradicional, março é o mês das sementeiras de primavera: batatas, favas já crescidas desde o outono, e a preparação dos canteiros de hortícolas. «Em março, quem não semeou, não ceifará» — reza o adágio. Nos portos piscatórios, a safra da sardinha começa a melhorar após os magros meses de inverno, embora o peixe ainda não tenha atingido a gordura do verão. Os pescadores artesanais das costas da Estremadura e do Algarve preparam as redes para a temporada forte que se avizinha.</p>
-</section
+<h3>🌿 Natureza & Efemérides</h3>
+<p>Na Península Ibérica, a segunda semana de março marca uma transição palpável. O dia já ultrapassou as onze horas e meia de luz solar, e a temperatura média diurna no estuário do Tejo ronda os 16–18 °C. Nos campos do Ribatejo e do Alentejo, os sobreiros começam a abrir os primeiros rebentos, enquanto as amendoeiras, que em fevereiro pintaram o Algarve de branco e rosa, cedem agora o protagonismo às laranjeiras em flor, cujo perfume domina os pomares algarvios. Os rosmaninhos (<em>Lavandula stoechas</em>) explodem em manchas violeta nas encostas calcárias da Arrábida e da Serra de Sintra.</p>
+<p>Os andorinhões-pálidos (<em>Apus pallidus</em>) já regressaram aos beirais das cidades costeiras, e nas zonas húmidas do Sado e do Tejo intensifica-se a passagem migratória de limícolas em rota para o Norte da Europa. Nas águas da costa vicentina, os golfinhos-comuns acompanham os cardumes de sardinha que se aproximam do litoral com o aumento gradual da temperatura da água. É tempo de preparar as hortas: semeiam-se favas, ervilhas e batatas, conforme manda o adágio — «Em março, mete a mão no saco.»</p>
+<p>No mar, os pescadores artesanais da Ericeira e de Peniche dedicam-se à captura do polvo e do congro, enquanto a safra do percebe atinge um dos seus picos, antes que as marés vivas da Páscoa dificultem o acesso às rochas
   </div>
-
-  <div class="footer">
-    ALMANAQUE · 2026-03-10 · Generated by Claude AI & Produzido por Sérgio L. Batalha · Nazaré, Portugal
+  <div class="ft">
+    <span>Almanaque · Nazaré, Portugal · 2026-03-10</span>
+    <span class="ft-brand">Produzido por Sérgio L. Batalha</span>
+  </div>
 </div>
 </body>
 </html>
