@@ -12,58 +12,54 @@
 <title>Almanaque Diário · Nazaré · 11/03/2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --dark: #16110a; --dark2: #241a0d; --gold: #c8973a; --gold-pale: #e8d5a3;
-    --rust: #7a4a1a; --bg: #faf7f2; --bg-alt: #f2ede3; --text: #28200f;
-    --text-mid: #5a4a30; --text-light: #8a7458; --rule: #ddd0b0;
-  }
-  body { background: #e8e0d0; font-family: 'Source Sans 3', sans-serif; color: var(--text); padding: 24px 16px 60px; min-height: 100vh; }
-  .page { max-width: 660px; margin: 0 auto; background: var(--bg); box-shadow: 0 8px 40px rgba(0,0,0,0.18); }
-  .hd { background: var(--dark); padding: 36px 36px 28px; text-align: center; border-bottom: 3px solid var(--gold); }
-  .hd-eyebrow { font-family: 'Source Sans 3', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-  .hd-date { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 400; color: #fff; line-height: 1; margin-bottom: 10px; }
-  .hd-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; color: var(--gold-pale); opacity: 0.75; }
-  .vitals { background: var(--dark2); display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid rgba(200,151,58,0.2); }
-  .vitals-b { border-bottom: 2px solid var(--gold); }
-  .vital { padding: 14px 10px; text-align: center; border-right: 1px solid rgba(200,151,58,0.15); }
-  .vital:last-child { border-right: none; }
-  .vital-icon { font-size: 16px; display: block; margin-bottom: 4px; }
-  .vital-val { display: block; font-size: 13px; font-weight: 600; color: var(--gold-pale); line-height: 1.2; }
-  .vital-lbl { display: block; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); opacity: 0.6; margin-top: 3px; }
-  .body { padding: 0 36px 36px; }
-  .sec { padding-top: 28px; border-top: 1px solid var(--rule); margin-top: 28px; }
-  .sec:first-child { border-top: none; margin-top: 0; padding-top: 30px; }
-  .sec-title { font-family: 'Source Sans 3', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--rust); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-  .sec-title::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
-  .cal-list { list-style: none; }
-  .cal-list li { display: flex; gap: 12px; padding: 6px 0; border-bottom: 1px solid rgba(221,208,176,0.4); font-size: 14px; line-height: 1.5; }
-  .cal-list li:last-child { border-bottom: none; }
-  .cal-list li strong { min-width: 150px; flex-shrink: 0; color: var(--text); font-weight: 600; }
-  .cal-list li span { color: var(--text-mid); }
-  .almanac-list { list-style: none; padding: 0; }
-  .almanac-list li { padding: 9px 0 9px 16px; border-bottom: 1px solid rgba(221,208,176,0.35); font-size: 14.5px; line-height: 1.65; color: var(--text); position: relative; }
-  .almanac-list li:last-child { border-bottom: none; }
-  .almanac-list li::before { content: ''; position: absolute; left: 0; top: 17px; width: 6px; height: 1px; background: var(--gold); }
-  .almanac-list li strong { color: var(--dark); font-weight: 600; }
-  .prose p { font-size: 14.5px; line-height: 1.8; color: var(--text); margin-bottom: 12px; }
-  .prose p:last-child { margin-bottom: 0; }
-  .thought-body { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 20px; }
-  blockquote { border-left: 2px solid var(--gold); padding: 10px 16px; font-size: 14px; line-height: 1.7; color: var(--text-mid); font-style: italic; }
-  blockquote cite { display: block; margin-top: 6px; font-size: 11px; font-style: normal; letter-spacing: 1px; color: var(--text-light); text-transform: uppercase; }
-  .word-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
-  .word-term { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--dark); }
-  .word-pron { font-size: 13px; color: var(--text-light); font-style: italic; }
-  .word-row { font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 7px; padding-left: 12px; border-left: 2px solid var(--rule); }
-  .word-row strong { color: var(--dark); font-weight: 600; }
-  .word-row em { font-style: italic; color: var(--text-mid); }
-  .ft { background: var(--bg-alt); border-top: 2px solid var(--gold); padding: 16px 36px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-family: 'Source Sans 3', sans-serif; }
-  .ft-brand { color: var(--rust); font-weight: 600; }
-  @media (max-width: 520px) {
-    .hd { padding: 28px 20px 22px; } .hd-date { font-size: 30px; } .body { padding: 0 20px 28px; }
-    .vitals, .vitals-b { grid-template-columns: repeat(2, 1fr); }
-    .vital:nth-child(2), .vital:nth-child(4) { border-right: none; }
-    .ft { flex-direction: column; gap: 4px; text-align: center; }
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root { --dark:#16110a; --dark2:#241a0d; --gold:#c8973a; --gold-pale:#e8d5a3; --rust:#7a4a1a; --bg:#faf7f2; --bg-alt:#f2ede3; --text:#28200f; --text-mid:#5a4a30; --text-light:#8a7458; --rule:#ddd0b0; }
+  body { background:#e8e0d0; font-family:'Source Sans 3',sans-serif; color:var(--text); padding:24px 16px 60px; min-height:100vh; }
+  .page { max-width:660px; margin:0 auto; background:var(--bg); box-shadow:0 8px 40px rgba(0,0,0,0.18); }
+  .hd { background:var(--dark); padding:36px 36px 28px; text-align:center; border-bottom:3px solid var(--gold); }
+  .hd-eyebrow { font-family:'Source Sans 3',sans-serif; font-size:10px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+  .hd-date { font-family:'Playfair Display',serif; font-size:42px; font-weight:400; color:#fff; line-height:1; margin-bottom:10px; }
+  .hd-sub { font-family:'Playfair Display',serif; font-style:italic; font-size:15px; color:var(--gold-pale); opacity:0.75; }
+  .vitals { background:var(--dark2); display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid rgba(200,151,58,0.2); }
+  .vitals-b { border-bottom:2px solid var(--gold); }
+  .vital { padding:14px 10px; text-align:center; border-right:1px solid rgba(200,151,58,0.15); }
+  .vital:last-child { border-right:none; }
+  .vital-icon { font-size:16px; display:block; margin-bottom:4px; }
+  .vital-val { display:block; font-size:13px; font-weight:600; color:var(--gold-pale); line-height:1.2; }
+  .vital-lbl { display:block; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); opacity:0.6; margin-top:3px; }
+  .body { padding:0 36px 36px; }
+  .sec { padding-top:28px; border-top:1px solid var(--rule); margin-top:28px; }
+  .sec:first-child { border-top:none; margin-top:0; padding-top:30px; }
+  .sec-title { font-family:'Source Sans 3',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--rust); margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+  .sec-title::after { content:''; flex:1; height:1px; background:var(--rule); }
+  .cal-list { list-style:none; }
+  .cal-list li { display:flex; gap:12px; padding:6px 0; border-bottom:1px solid rgba(221,208,176,0.4); font-size:14px; line-height:1.5; }
+  .cal-list li:last-child { border-bottom:none; }
+  .cal-list li strong { min-width:150px; flex-shrink:0; color:var(--text); font-weight:600; }
+  .cal-list li span { color:var(--text-mid); }
+  .almanac-list { list-style:none; padding:0; }
+  .almanac-list li { padding:9px 0 9px 16px; border-bottom:1px solid rgba(221,208,176,0.35); font-size:14.5px; line-height:1.65; color:var(--text); position:relative; }
+  .almanac-list li:last-child { border-bottom:none; }
+  .almanac-list li::before { content:''; position:absolute; left:0; top:17px; width:6px; height:1px; background:var(--gold); }
+  .almanac-list li strong { color:var(--dark); font-weight:600; }
+  .prose p { font-size:14.5px; line-height:1.8; color:var(--text); margin-bottom:12px; }
+  .prose p:last-child { margin-bottom:0; }
+  .thought-body { font-family:'Playfair Display',serif; font-style:italic; font-size:15px; line-height:1.8; color:var(--text); margin-bottom:20px; }
+  blockquote { border-left:2px solid var(--gold); padding:10px 16px; font-size:14px; line-height:1.7; color:var(--text-mid); font-style:italic; }
+  blockquote cite { display:block; margin-top:6px; font-size:11px; font-style:normal; letter-spacing:1px; color:var(--text-light); text-transform:uppercase; }
+  .word-head { display:flex; align-items:baseline; gap:12px; margin-bottom:12px; }
+  .word-term { font-family:'Playfair Display',serif; font-size:24px; font-weight:700; color:var(--dark); }
+  .word-pron { font-size:13px; color:var(--text-light); font-style:italic; }
+  .word-row { font-size:14px; line-height:1.7; color:var(--text); margin-bottom:7px; padding-left:12px; border-left:2px solid var(--rule); }
+  .word-row strong { color:var(--dark); font-weight:600; }
+  .word-row em { font-style:italic; color:var(--text-mid); }
+  .ft { background:var(--bg-alt); border-top:2px solid var(--gold); padding:16px 36px; display:flex; justify-content:space-between; align-items:center; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-light); font-family:'Source Sans 3',sans-serif; }
+  .ft-brand { color:var(--rust); font-weight:600; }
+  @media (max-width:520px) {
+    .hd { padding:28px 20px 22px; } .hd-date { font-size:30px; } .body { padding:0 20px 28px; }
+    .vitals, .vitals-b { grid-template-columns:repeat(2,1fr); }
+    .vital:nth-child(2), .vital:nth-child(4) { border-right:none; }
+    .ft { flex-direction:column; gap:4px; text-align:center; }
   }
 </style>
 </head>
@@ -74,6 +70,7 @@
     <div class="hd-date">Quarta-feira, 11/03/2026</div>
     <div class="hd-sub">Nazaré, Portugal &nbsp;·&nbsp; ❄️ Inverno &nbsp;·&nbsp; ♓ Peixes</div>
   </div>
+  
   <div class="vitals">
     <div class="vital"><span class="vital-icon">📅</span><span class="vital-val">Dia 70</span><span class="vital-lbl">de 2026</span></div>
     <div class="vital"><span class="vital-icon">📆</span><span class="vital-val">295</span><span class="vital-lbl">dias restantes</span></div>
@@ -87,15 +84,15 @@
     <div class="vital"><span class="vital-icon">⏳</span><span class="vital-val">11h 31m</span><span class="vital-lbl">Duração do dia</span></div>
   </div>
   <div class="body">
-    <div class="sec">
+
+<div class="sec">
 <div class="sec-title">📅 Este Dia em Múltiplos Calendários</div>
 <ul class="cal-list">
-<li><strong>Gregoriano</strong><span>Quarta-feira, 11 de março de 2026</span></li>
-<li><strong>Islâmico/Hijri</strong><span>12 de Ramadão de 1447 AH</span></li>
-<li><strong>Hebraico</strong><span>11 de Adar de 5786</span></li>
-<li><strong>Chinês Lunissolar</strong><span>22.º dia do 1.º mês, ano Bing-Wu (Cavalo de Fogo), 4723</span></li>
-<li><strong>Persa/Hijri Solar</strong><span>20 de Esfand de 1404</span></li>
-<li><strong>Etíope</strong><span>2 de Megabit de 2018</span></li>
+<li><strong>Gregoriano</strong><span>Quarta-feira, 11/03/2026</span></li>
+<li><strong>Islâmico/Hijri</strong><span>٢٢ رمضان ١٤٤٧ هـ</span></li>
+<li><strong>Hebraico</strong><span>22 באדר 5786</span></li>
+<li><strong>Persa/Hijri Solar</strong><span>۲۰ اسفند ۱۴۰۴</span></li>
+<li><strong>Chinês Lunissolar</strong><span>2026(丙午)正月23日</span></li>
 <li><strong>Juliano</strong><span>26 de fevereiro de 2026</span></li>
 </ul>
 </div>
@@ -103,67 +100,67 @@
 <div class="sec">
 <div class="sec-title">📜 Este Dia na História</div>
 <ul class="almanac-list">
-<li><strong>222</strong> — O imperador romano Heliogábalo é assassinado pela Guarda Pretoriana; o seu primo Alexandre Severo é proclamado imperador.</li>
-<li><strong>1513</strong> — Giovanni de' Medici é eleito Papa, tomando o nome de Leão X, tornando-se um dos mais célebres mecenas do Renascimento.</li>
-<li><strong>1702</strong> — É publicado o primeiro jornal diário em língua inglesa, o «The Daily Courant», em Londres.</li>
-<li><strong>1811</strong> — Revoltas luditas rebentam em Nottingham, Inglaterra, com a destruição de teares mecânicos em protesto contra a industrialização.</li>
-<li><strong>1851</strong> — Estreia da ópera «Rigoletto» de Giuseppe Verdi no Teatro La Fenice, em Veneza, com estrondoso sucesso.</li>
-<li><strong>1941</strong> — O presidente dos Estados Unidos Franklin D. Roosevelt assina a Lei de Empréstimo e Arrendamento (Lend-Lease Act), permitindo o envio de material bélico aos Aliados durante a Segunda Guerra Mundial.</li>
-<li><strong>1985</strong> — Mikhail Gorbachev é eleito Secretário-Geral do Partido Comunista da União Soviética, iniciando as reformas da Perestroika e Glasnost.</li>
-<li><strong>2004</strong> — Uma série de atentados terroristas coordenados atinge comboios suburbanos em Madrid, Espanha, causando 193 mortos e mais de 2 000 feridos.</li>
-<li><strong>2011</strong> — Um sismo de magnitude 9,0 e subsequente tsunami devastam a costa nordeste do Japão, provocando o desastre nuclear de Fukushima.</li>
-<li><strong>2020</strong> — A Organização Mundial da Saúde declara oficialmente a pandemia de COVID-19.</li>
+<li><strong>222</strong> — O imperador romano Heliogábalo é assassinado pela Guarda Pretoriana em Roma, sendo sucedido pelo jovem Alexandre Severo.</li>
+<li><strong>1702</strong> — É publicado o primeiro número do jornal <em>The Daily Courant</em>, em Londres, considerado o primeiro diário inglês de publicação regular.</li>
+<li><strong>1851</strong> — Estreia da ópera <em>Rigoletto</em>, de Giuseppe Verdi, no Teatro La Fenice, em Veneza, com enorme sucesso de público.</li>
+<li><strong>1942</strong> — O general Douglas MacArthur abandona as Filipinas por ordem do presidente Roosevelt, durante a ofensiva japonesa na Segunda Guerra Mundial, proferindo a célebre frase «I shall return».</li>
+<li><strong>1985</strong> — Mikhail Gorbatchov é eleito Secretário-Geral do Partido Comunista da União Soviética, dando início à era da Perestroika e da Glasnost.</li>
+<li><strong>2004</strong> — Dez bombas explodem em comboios suburbanos de Madrid, causando 193 mortos e mais de 2000 feridos, no pior atentado terrorista da história de Espanha.</li>
+<li><strong>2011</strong> — Um sismo de magnitude 9,0 atinge a costa nordeste do Japão, provocando um tsunami devastador e o desastre nuclear de Fukushima.</li>
 </ul>
 </div>
 
 <div class="sec">
 <div class="sec-title">👤 Nascidos Neste Dia</div>
 <ul class="almanac-list">
-<li><strong>1544 — Torquato Tasso</strong>, poeta italiano, autor do poema épico «Jerusalém Libertada».</li>
-<li><strong>1811 — Urbain Le Verrier</strong>, astrónomo e matemático francês que previu a existência e posição do planeta Neptuno.</li>
-<li><strong>1885 — Malcolm Campbell</strong>, piloto britânico recordista de velocidade em terra e na água.</li>
-<li><strong>1898 — Dorothy Gish</strong>, atriz norte-americana do cinema mudo e irmã de Lillian Gish.</li>
-<li><strong>1916 — Harold Wilson</strong>, político britânico, Primeiro-Ministro do Reino Unido em dois mandatos.</li>
-<li><strong>1931 — Rupert Murdoch</strong>, magnata australo-americano dos meios de comunicação social.</li>
-<li><strong>1934 — Sam Donaldson</strong>, jornalista norte-americano, correspondente da ABC News na Casa Branca.</li>
-<li><strong>1952 — Douglas Adams</strong>, escritor britânico, autor de «À Boleia pela Galáxia».</li>
-<li><strong>1963 — Alex Kingston</strong>, atriz britânica, conhecida por papéis em «ER» e «Doctor Who».</li>
-<li><strong>1978 — Didier Drogba</strong>, futebolista costa-marfinense, lenda do Chelsea FC.</li>
+<li><strong>1544 — Torquato Tasso</strong>, poeta italiano, autor da epopeia <em>Jerusalém Libertada</em>, uma das obras capitais do Renascimento.</li>
+<li><strong>1916 — Harold Wilson</strong>, político britânico, Primeiro-Ministro do Reino Unido em dois mandatos (1964–1970 e 1974–1976).</li>
+<li><strong>1931 — Rupert Murdoch</strong>, magnata australiano-americano dos meios de comunicação, fundador da News Corporation.</li>
+<li><strong>1952 — Douglas Adams</strong>, escritor britânico, autor de <em>À Boleia pela Galáxia</em>, clássico da ficção científica humorística.</li>
 </ul>
 </div>
 
 <div class="sec">
 <div class="sec-title">✝️ Falecidos Neste Dia</div>
 <ul class="almanac-list">
-<li><strong>222 — Heliogábalo</strong>, imperador romano, assassinado com apenas 18 anos.</li>
-<li><strong>1820 — Benjamin West</strong>, pintor anglo-americano e presidente da Royal Academy of Arts.</li>
-<li><strong>1869 — Hector Berlioz</strong>, compositor francês, um dos expoentes do Romantismo musical, autor da «Sinfonia Fantástica».</li>
-<li><strong>1955 — Alexander Fleming</strong>, médico e bacteriologista escocês, Prémio Nobel da Medicina (1945) pela descoberta da penicilina.</li>
-<li><strong>2006 — Slobodan Milošević</strong>, presidente da Sérvia e da Jugoslávia, falecido durante o julgamento por crimes de guerra em Haia.</li>
-<li><strong>2008 — João Villaret</strong>, ator e declamador português de referência (nota: faleceu a 11 de janeiro; incluído por associação cultural).</li>
-<li><strong>2012 — Jean Giraud (Moebius)</strong>, desenhador e argumentista francês de banda desenhada, criador de mundos visionários.</li>
+<li><strong>1955 — Alexander Fleming</strong>, médico e bacteriologista escocês, descobridor da penicilina e laureado com o Prémio Nobel da Medicina em 1945.</li>
+<li><strong>2006 — Slobodan Milošević</strong>, ex-presidente da Sérvia e da Jugoslávia, falecido na prisão do Tribunal Penal Internacional de Haia.</li>
+<li><strong>2016 — Keith Emerson</strong>, tecladista e compositor britânico, cofundador do trio de rock progressivo Emerson, Lake & Palmer.</li>
 </ul>
 </div>
 
 <div class="sec">
 <div class="sec-title">⛪ Dias de Festa e Santos</div>
 <ul class="almanac-list">
-<li><strong>Católico:</strong> São Constantino, mártir; Santa Auréa de Óstia, virgem e mártir; São Sofrónio de Jerusalém, patriarca; São Eulogio de Córdova, mártir e padroeiro dos ourives.</li>
-<li><strong>Ortodoxo:</strong> São Sofrónio, Patriarca de Jerusalém (†638); memória dos Santos Quarenta Mártires de Sebaste (celebração próxima).</li>
-<li><strong>Onomásticos (Portugal):</strong> Constantino, Auréa, Eulogio, Sofrónio.</li>
+<li><strong>Católico:</strong> São Constantino, mártir; São Sofrónio de Jerusalém, patriarca e doutor da Igreja; Santa Áurea de Óstia, virgem e mártir.</li>
+<li><strong>Ortodoxo:</strong> São Sofrónio, Patriarca de Jerusalém (séc. VII); comemoração dos Santos Quarenta Mártires de Sebaste (em alguns calendários locais transferida para esta data).</li>
+<li><strong>Onomásticos (Portugal):</strong> Constantino, Sofrónio, Áurea.</li>
 </ul>
 </div>
 
 <div class="sec">
 <div class="sec-title">🌿 Natureza e Efemérides</div>
-<div class="prose"><p>Na Nazaré, o Sol nasce às 07:02 e põe-se às 18:32 (UTC), proporcionando um dia de 11 horas e 31 minutos — sinal claro de que o equinócio da primavera se aproxima a passos largos. A cada dia que passa, ganham-se quase três minutos de luz solar, e a paisagem da costa atlântica portuguesa começa a despir-se lentamente dos tons cinzentos do inverno.</p><p>A Lua encontra-se na fase de Quarto Minguante Giboso, com 53% de iluminação, no 21.º dia do ciclo lunar. A sua presença discreta no céu matinal convida à contemplação das constelações tardias de inverno — Orionte começa a inclinar-se para poente, enquanto Leão se ergue triunfante a leste, anunciando a viragem estacional. É uma boa noite para observação astronómica, com a luminosidade lunar a não ofuscar por completo as estrelas mais ténues.</p><p>Nos campos do Ribatejo e do Alentejo, as amendoeiras já largaram as últimas pétalas e os primeiros rebentos de vinha despontam nos socalcos do Douro. As andorinhas-das-chaminés (Hirundo rustica) começam a regressar ao território continental, e nos pauis e estuários nota-se o início da debandada dos patos-reais e das cercetas que invernam em Portugal. As ervas silvestres cobrem as bermas de amarelo e roxo — malmequeres, trevos e violetas partilham o chão com o alecrim em plena floração, enchendo o ar de um perfume balsâmico.</p></div>
+<div class="prose"><p>Estamos nos últimos dias do Inverno astronómico — faltam apenas dez dias para o equinócio da Primavera. O dia já ultrapassou as 11 horas e 30 minutos de luz solar na zona da Nazaré, um ganho notório face ao solstício de Dezembro. Ao anoitecer, a Lua minguante gibosa, com pouco mais de metade do disco iluminado, nasce já tarde, deixando as primeiras horas da noite propícias à observação de estrelas.</p><p>Nos campos do litoral centro de Portugal, as amendoeiras já perderam grande parte das pétalas, mas os pessegueiros e as cerejeiras preparam-se para florescer. Os primeiros rebentos dos salgueiros-chorões ganham cor junto às ribeiras, e os andorinhões começam a ser avistados nos céus do Sul do país, anunciando a chegada iminente da estação quente.</p><p>Nos jardins, é boa altura para semear favas tardias, plantar batatas em terrenos bem drenados e preparar os canteiros de ervas aromáticas — alecrim, tomilho e orégãos — que beneficiarão do calor crescente das próximas semanas. O solo, ainda fresco pela humidade invernal, recebe bem as novas raízes.</p></div>
 </div>
 
 <div class="sec">
 <div class="sec-title">💭 Pensamento do Dia</div>
-<div class="thought-body">Neste dia que carrega memórias de tragédias profundas — Madrid em 2004, o Japão em 2011 — somos lembrados de que a fragilidade humana e a resiliência caminham de mãos dadas. É na solidariedade perante a catástrofe que se revela o melhor da condição humana.</div>
-<blockquote>
-  </div>
+<div class="thought-body">A memória dos que sofreram impõe-nos o dever de não esquecer. Neste aniversário dos atentados de Madrid e do sismo do Japão, recordar é também um acto de esperança — porque nas ruínas do desastre nasceram sempre gestos de solidariedade que nos definem enquanto humanidade.</div>
+<blockquote>«Aquele que não recorda a história está condenado a repeti-la.»<cite>— George Santayana</cite></blockquote>
+</div>
+
+<div class="sec">
+<div class="sec-title">🌅 Para Começar o Dia</div>
+<div class="thought-body">O Inverno despede-se a passos largos e cada manhã traz mais alguns minutos de claridade, como uma promessa silenciosa. Nesta quarta-feira de Março, com a Lua a minguar serenamente no céu, é um bom momento para soltar o que já não nos serve e fazer espaço ao que virá com a Primavera. Respire o ar fresco desta transição — ele traz consigo o perfume das primeiras flores e a energia de um recomeço.</div>
+</div>
+
+<div class="sec">
+<div class="sec-title">📖 Palavra do Dia</div>
+<div class="word-head"><span class="word-term">ALVÍSSARAS</span><span class="word-pron">/al.ˈvi.sɐ.ɾɐʃ/</span></div>
+<div class="word-row"><strong>Etimologia:</strong> Do árabe hispânico <em>albúšra</em>, por sua vez do árabe clássico <em>bušrā</em> (بشرى), que significa «boa nova, boas novas». Entrou no Português medieval como recompensa dada a quem trazia uma notícia feliz.</div>
+<div class="word-row"><strong>Definição:</strong> Substantivo feminino plural. Recompensa ou presente dado a quem traz uma boa notícia; por extensão, exclamação de alegria perante uma novidade auspiciosa.</div>
+<div class="word-row"><strong>Exemplo:</strong> <em>«Alvíssaras! O navio entrou a barra são e salvo!» — gritou o miúdo, correndo pelo cais da Nazaré abaixo.</em></div>
+</div></div>
   <div class="ft">
     <span>Almanaque · Nazaré, Portugal · 2026-03-11</span>
     <span class="ft-brand">Produzido por Sérgio L. Batalha</span>
